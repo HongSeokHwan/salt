@@ -27,7 +27,7 @@ logging.config.dictConfig({
             'class': 'logging.handlers.RotatingFileHandler',
             'level': 'DEBUG',
             'formatter': 'standard',
-            'filename': 'logs/log.plog',
+            'filename': 'log/log.plog',
             'mode': 'a',
             # 'maxBytes': 10485760,
             # 'backupCount': 1,

@@ -2,3 +2,4 @@
 log
 *.pyc
 config.local.json
+media_path
