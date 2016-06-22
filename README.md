@@ -14,6 +14,7 @@ automatic video / audio compression program
 
 pip install -r requirements.txt
 ./init.sh
+./clear.sh
 ./run.sh
 
 
