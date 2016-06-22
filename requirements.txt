@@ -1,0 +1,7 @@
+decorator==4.0.10
+glob2==0.4.1
+imageio==1.5
+moviepy==0.2.2.11
+numpy==1.11.0
+tqdm==4.7.4
+wsgiref==0.1.2

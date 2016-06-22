@@ -1,5 +1,6 @@
 {
-  "#": "Override config whatever you want",
-
-  "#": "END OF JSON"
+  "media_path": "media_path/",
+  "compress_day": 5,
+  "file_size_byte_limit": 3145728,
+  "#": "END OF JSON (This is last element without comma)"
 }

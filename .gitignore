@@ -4,3 +4,5 @@ log
 config.local.json
 media_path
 ./*.mp4
+.salt/
+*.swp
