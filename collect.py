@@ -25,14 +25,11 @@ class CollectDelegate(object):
             file_time = time.localtime(st[ST_MTIME])
             diff_sec = (time.mktime(now) - time.mktime(file_time)) / 60
             diff_days = diff_sec / (60 * 24)
-
             if diff_days < compress_day:
                 continue
-
             file_size_byte = st[ST_SIZE]
             if file_size_byte < file_size_byte_limit:
                 continue
-            print filename
             logger.debug(
                 'Collect target file exist: %s, %s bytes, %.2f days' % (
                     filename, "{:,}".format(file_size_byte), diff_days))
