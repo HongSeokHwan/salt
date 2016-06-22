@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+import uuid
 
 from base.log import logger
 from base.singleton import SingletonMixin
@@ -20,3 +21,11 @@ class LoopChecker(object):
         if self.cur_count >= self.next_count:
             self.next_count *= 2
             logger.info('%s (%d)' % (self.msg, self.cur_count))
+
+    def reset(self):
+        self.cur_count = 1
+        self.next_count = 2
+
+
+def get_uuid_mp4():
+    return str(uuid.uuid4()) + '.mp4'

@@ -1,7 +1,10 @@
 import subprocess
+import os.path
+import shutil
 
 from moviepy.editor import VideoFileClip
 
+import base.util as util
 from base.log import logger
 
 FFMPEG = 'ffmpeg'
@@ -16,9 +19,14 @@ class CompressDelegate(object):
         clip = VideoFileClip(path)
         return clip.duration
 
-    def compress(self, input_path, output_path):
+    def compress(self, config, input_paths):
+        for input_path in input_paths:
+            success = self._compress_one(config, input_path)
+            # check fail
+
+    def _compress_one(self, config, input_path):
         logger.debug('Start compress video')
-        # TODO: delete output_path if exist
+        output_path = util.get_uuid_mp4()
         duration = int(self.get_video_duration(input_path))
         cmd = [FFMPEG, '-y',
                '-i', input_path,
@@ -48,5 +56,9 @@ class CompressDelegate(object):
         process = subprocess.Popen(
             cmd, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
         process.communicate()
-        # TODO: check output_path exist or not
-        return True
+        if os.path.exists(output_path):
+            origin_path = input_path
+            new_path = output_path
+            shutil.move(new_path, origin_path)
+            return True
+        return False
